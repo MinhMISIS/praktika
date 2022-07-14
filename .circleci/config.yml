@@ -1,0 +1,28 @@
+
+version: 2.1
+
+
+orbs:
+
+  python: circleci/python@1.5.0
+
+
+jobs:
+  build-and-test:
+    docker:
+      - image: cimg/python:3.10.2
+    steps:
+      - checkout
+      - run: sudo pip install jupyter_client
+      - run: sudo pip install nbconvert
+      - run: sudo pip install nump
+      - run: sudo pip install matplotlib
+      - run: sudo pip install sklearn
+      - run: sudo python3 -m pip install ipykernel
+      - run: sudo python3 -m ipykernel install --user
+      - run: jupyter-nbconvert --execute dz1.ipynb --to html
+
+workflows:
+  sample: 
+    jobs:
+      - build-and-test
