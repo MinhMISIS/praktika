@@ -24,12 +24,7 @@ with:
 cache: pip
 python-version: '3.7'
 - name: Install Dependencies # Установка зависимостей для Jupyter
-run: pip install jupyterlab
-run: pip install nbconvert
-run: pip install numpy
-run: pip install matplotlib
-run: pip install sklearn
-run: pip install kaggle
+run: pip install -r requirements.txt
 - name: Exeute Notebook # Выполнение тетрадки Jupyter
 run: jupyter-nbconvert --execute dz1.ipynb --to html
 - name: Upload a Build Artifact # Выгрузка вывода тетрадки (артефакта задания) в html файл
